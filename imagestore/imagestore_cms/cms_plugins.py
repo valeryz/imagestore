@@ -16,6 +16,9 @@ class AlbumPlugin(CMSPluginBase):
     text_enabled = True
 
     def render(self, context, instance, placeholder):
+        template = getattr(settings, 'IMAGESTORE_TEMPLATE', None)
+        if template:
+            self.render_template = template
         context.update({'album': instance.album})
         return context
 
@@ -30,7 +33,7 @@ class AlbumCarouselPlugin(CMSPluginBase):
 
         # default carousel template in the settings file
         carousel_template = getattr(settings, 'IMAGESTORE_CAROUSEL_TEMPLATE', None)
-        
+
         if carousel_template:
             self.render_template = carousel_template
 
