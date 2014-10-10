@@ -11,5 +11,6 @@ class ImagestoreApp(CMSApp):
     name = _("Imagestore App") # give your app a name, this is required
     urls = ["imagestore.imagestore_cms.urls"] # link your app to url configuration(s)
 
-apphook_pool.register(ImagestoreApp) # register your app
-  
+# valeryz: Disabling the app, using only as a plugin, apps make
+# deployment a pain because of import time database access
+# apphook_pool.register(ImagestoreApp) # register your app
